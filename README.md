@@ -7,10 +7,15 @@
 ![Cloud AI](https://img.shields.io/badge/Cloud%20AI-OpenRouter-6d28d9)
 ![Audio](https://img.shields.io/badge/Audio-I2S%20PCM-2563eb)
 ![Status](https://img.shields.io/badge/Status-Prototype-f59e0b)
+[![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
 
 UAL is an ESP32-S3 IoT prototype that listens to nearby speech, translates it through a cloud AI pipeline, and plays the translated result through a speaker. It combines physical sensing, embedded audio capture, HTTPS API calls, and a local web control panel in one observable device.
 
 The project was built for an Internet of Things course, but the architecture is intentionally practical: a distance sensor decides when interaction should start, a microphone captures PCM audio, ESP32-S3 sends the audio to OpenRouter, and a MAX98357A I2S amplifier turns the translated TTS stream back into sound.
+
+**Repository description:** ESP32-S3 IoT voice translator that captures speech, translates it through OpenRouter cloud AI, and plays the result through an I2S speaker.
+
+**Project tags:** `esp32-s3`, `platformio`, `arduino`, `iot`, `voice-translation`, `speech-to-text`, `text-to-speech`, `openrouter`, `i2s`, `embedded-systems`, `vl53l0x`, `inmp441`, `max98357a`
 
 ## Prototype Demo
 
@@ -229,10 +234,15 @@ The same script also writes [`presentation/speaker_notes.md`](presentation/speak
 - The prototype currently uses `WiFiClientSecure::setInsecure()` for HTTPS connection setup. For production use, add certificate verification.
 - Voice data is sent to a cloud provider. Treat recorded speech as sensitive data and disclose that behavior to users.
 
+## License
+
+This project is licensed under the MIT License. See [`LICENSE`](LICENSE) for details.
+
 ## Repository Layout
 
 ```text
 .
+|-- LICENSE
 |-- docs/
 |   |-- architecture.svg
 |   |-- prototype-15s.jpg
