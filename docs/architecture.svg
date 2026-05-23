@@ -1,0 +1,83 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="640" viewBox="0 0 1200 640" role="img" aria-labelledby="title desc">
+  <title id="title">UAL system architecture</title>
+  <desc id="desc">Block diagram showing the sensor, ESP32-S3, HTTPS cloud AI pipeline, and speaker actuator.</desc>
+  <defs>
+    <marker id="arrow" markerWidth="12" markerHeight="12" refX="10" refY="6" orient="auto" markerUnits="strokeWidth">
+      <path d="M2,2 L10,6 L2,10 Z" fill="#24414f"/>
+    </marker>
+    <style>
+      .bg { fill: #f6f8fb; }
+      .band { fill: #12212b; }
+      .title { fill: #12212b; font: 700 34px Arial, sans-serif; }
+      .subtitle { fill: #536371; font: 18px Arial, sans-serif; }
+      .label { fill: #12212b; font: 700 20px Arial, sans-serif; }
+      .body { fill: #536371; font: 15px Arial, sans-serif; }
+      .tiny { fill: #536371; font: 13px Arial, sans-serif; }
+      .box { fill: #ffffff; stroke-width: 2; rx: 14; }
+      .sensor { stroke: #0f766e; }
+      .audio { stroke: #2563eb; }
+      .mcu { stroke: #12212b; }
+      .net { stroke: #b45309; }
+      .cloud { stroke: #6d28d9; }
+      .out { stroke: #15803d; }
+      .chip { fill: #eef7f5; stroke: #0f766e; stroke-width: 1.5; rx: 12; }
+      .arrow { stroke: #24414f; stroke-width: 3; fill: none; marker-end: url(#arrow); }
+    </style>
+  </defs>
+
+  <rect class="bg" x="0" y="0" width="1200" height="640"/>
+  <rect class="band" x="0" y="0" width="1200" height="18"/>
+  <text class="title" x="60" y="70">Understand Any Language (UAL)</text>
+  <text class="subtitle" x="60" y="102">End-to-end IoT speech translation: physical sensing, embedded control, cloud AI, and physical audio output.</text>
+
+  <rect class="box sensor" x="60" y="180" width="190" height="118"/>
+  <text class="label" x="88" y="218">VL53L0X</text>
+  <text class="body" x="88" y="248">Distance sensor</text>
+  <text class="tiny" x="88" y="273">I2C, presence trigger</text>
+
+  <rect class="box audio" x="60" y="342" width="190" height="118"/>
+  <text class="label" x="88" y="380">INMP441</text>
+  <text class="body" x="88" y="410">Microphone</text>
+  <text class="tiny" x="88" y="435">I2S RX, PCM capture</text>
+
+  <rect class="box mcu" x="330" y="232" width="225" height="176"/>
+  <text class="label" x="366" y="270">ESP32-S3</text>
+  <text class="body" x="366" y="302">Reads sensors</text>
+  <text class="body" x="366" y="329">Captures 16 kHz PCM</text>
+  <text class="body" x="366" y="356">Builds HTTPS requests</text>
+  <text class="body" x="366" y="383">Hosts web panel</text>
+
+  <rect class="box net" x="635" y="232" width="210" height="176"/>
+  <text class="label" x="674" y="270">Internet Layer</text>
+  <text class="body" x="674" y="302">Wi-Fi</text>
+  <text class="body" x="674" y="329">DNS + TCP/IP</text>
+  <text class="body" x="674" y="356">TLS</text>
+  <text class="body" x="674" y="383">HTTPS REST</text>
+
+  <rect class="box cloud" x="925" y="145" width="215" height="210"/>
+  <text class="label" x="962" y="183">OpenRouter AI</text>
+  <rect class="chip" x="955" y="212" width="155" height="34"/>
+  <text class="tiny" x="980" y="234">STT: Whisper</text>
+  <rect class="chip" x="955" y="263" width="155" height="34"/>
+  <text class="tiny" x="979" y="285">LLM translation</text>
+  <rect class="chip" x="955" y="314" width="155" height="34"/>
+  <text class="tiny" x="982" y="336">TTS: PCM</text>
+
+  <rect class="box out" x="925" y="410" width="215" height="118"/>
+  <text class="label" x="958" y="448">MAX98357A</text>
+  <text class="body" x="958" y="478">I2S amplifier</text>
+  <text class="tiny" x="958" y="503">Speaker actuator</text>
+
+  <path class="arrow" d="M250 239 C285 239 292 286 330 286"/>
+  <text class="tiny" x="268" y="230">I2C</text>
+  <path class="arrow" d="M250 401 C285 401 292 354 330 354"/>
+  <text class="tiny" x="268" y="421">I2S RX</text>
+  <path class="arrow" d="M555 320 L635 320"/>
+  <text class="tiny" x="572" y="304">JSON + WAV/Base64</text>
+  <path class="arrow" d="M845 285 L925 250"/>
+  <text class="tiny" x="858" y="257">HTTPS POST</text>
+  <path class="arrow" d="M1032 355 L1032 410"/>
+  <text class="tiny" x="1048" y="388">raw PCM</text>
+  <path class="arrow" d="M925 469 C760 555 515 545 390 420"/>
+  <text class="tiny" x="610" y="555">status, transcript, translation, audio playback</text>
+</svg>

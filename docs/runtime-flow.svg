@@ -1,0 +1,69 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="520" viewBox="0 0 1200 520" role="img" aria-labelledby="title desc">
+  <title id="title">UAL runtime flow</title>
+  <desc id="desc">State flow from ready, detect, listen, process, speak, and back to ready.</desc>
+  <defs>
+    <marker id="arrow" markerWidth="12" markerHeight="12" refX="10" refY="6" orient="auto" markerUnits="strokeWidth">
+      <path d="M2,2 L10,6 L2,10 Z" fill="#273d4a"/>
+    </marker>
+    <style>
+      .bg { fill: #fbfcfe; }
+      .title { fill: #13232f; font: 700 32px Arial, sans-serif; }
+      .subtitle { fill: #536371; font: 17px Arial, sans-serif; }
+      .state { fill: #ffffff; stroke-width: 2; rx: 16; }
+      .ready { stroke: #64748b; }
+      .detect { stroke: #0f766e; }
+      .listen { stroke: #2563eb; }
+      .process { stroke: #7c3aed; }
+      .speak { stroke: #15803d; }
+      .heading { fill: #13232f; font: 700 20px Arial, sans-serif; }
+      .body { fill: #536371; font: 14px Arial, sans-serif; }
+      .arrow { stroke: #273d4a; stroke-width: 3; fill: none; marker-end: url(#arrow); }
+      .note { fill: #fff7ed; stroke: #c2410c; stroke-width: 1.5; rx: 12; }
+    </style>
+  </defs>
+
+  <rect class="bg" width="1200" height="520"/>
+  <text class="title" x="60" y="68">Runtime State Flow</text>
+  <text class="subtitle" x="60" y="99">The firmware keeps sensor polling, voice capture, cloud processing, playback, serial commands, and the web panel in one observable loop.</text>
+
+  <rect class="state ready" x="60" y="190" width="160" height="105"/>
+  <text class="heading" x="104" y="229">Ready</text>
+  <text class="body" x="88" y="258">Wi-Fi active</text>
+  <text class="body" x="88" y="279">Web panel active</text>
+
+  <rect class="state detect" x="280" y="190" width="160" height="105"/>
+  <text class="heading" x="324" y="229">Detect</text>
+  <text class="body" x="307" y="258">VL53L0X</text>
+  <text class="body" x="307" y="279">or web command</text>
+
+  <rect class="state listen" x="500" y="190" width="160" height="105"/>
+  <text class="heading" x="544" y="229">Listen</text>
+  <text class="body" x="527" y="258">INMP441 PCM</text>
+  <text class="body" x="527" y="279">silence timeout</text>
+
+  <rect class="state process" x="720" y="160" width="185" height="165"/>
+  <text class="heading" x="765" y="199">Process</text>
+  <text class="body" x="750" y="230">STT transcription</text>
+  <text class="body" x="750" y="255">LLM translation</text>
+  <text class="body" x="750" y="280">TTS synthesis</text>
+  <text class="body" x="750" y="305">HTTPS REST</text>
+
+  <rect class="state speak" x="970" y="190" width="160" height="105"/>
+  <text class="heading" x="1017" y="229">Speak</text>
+  <text class="body" x="998" y="258">PCM stream</text>
+  <text class="body" x="998" y="279">MAX98357A</text>
+
+  <path class="arrow" d="M220 242 L280 242"/>
+  <path class="arrow" d="M440 242 L500 242"/>
+  <path class="arrow" d="M660 242 L720 242"/>
+  <path class="arrow" d="M905 242 L970 242"/>
+  <path class="arrow" d="M1050 295 C1040 430 185 430 140 295"/>
+
+  <rect class="note" x="185" y="352" width="330" height="74"/>
+  <text class="heading" x="213" y="383">Recording guards</text>
+  <text class="body" x="213" y="408">3 s silence stop, 30 s max window, buffer limit</text>
+
+  <rect class="note" x="580" y="352" width="330" height="74"/>
+  <text class="heading" x="608" y="383">Observability</text>
+  <text class="body" x="608" y="408">Web JSON status mirrors current firmware state</text>
+</svg>
