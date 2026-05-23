@@ -13,13 +13,9 @@ UAL is an ESP32-S3 IoT prototype that listens to nearby speech, translates it th
 
 The project was built for an Internet of Things course, but the architecture is intentionally practical: a distance sensor decides when interaction should start, a microphone captures PCM audio, ESP32-S3 sends the audio to OpenRouter, and a MAX98357A I2S amplifier turns the translated TTS stream back into sound.
 
-**Repository description:** ESP32-S3 IoT voice translator that captures speech, translates it through OpenRouter cloud AI, and plays the result through an I2S speaker.
-
-**Project tags:** `esp32-s3`, `platformio`, `arduino`, `iot`, `voice-translation`, `speech-to-text`, `text-to-speech`, `openrouter`, `i2s`, `embedded-systems`, `vl53l0x`, `inmp441`, `max98357a`
-
 ## Prototype Demo
 
-<img src="docs/prototype-15s.jpg" alt="UAL physical prototype captured from the demo video at 15 seconds" width="820">
+<img src="docs/prototype-annotated.jpg" alt="Annotated UAL physical prototype with detected hardware modules and their roles" width="940">
 
 
 ![UAL system architecture](docs/architecture.svg)
@@ -245,6 +241,7 @@ This project is licensed under the MIT License. See [`LICENSE`](LICENSE) for det
 |-- LICENSE
 |-- docs/
 |   |-- architecture.svg
+|   |-- prototype-annotated.jpg
 |   |-- prototype-15s.jpg
 |   `-- runtime-flow.svg
 |-- include/
